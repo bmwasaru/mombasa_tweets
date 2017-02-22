@@ -1,3 +1,5 @@
+import os
+
 import json
 import logging
 
@@ -5,12 +7,10 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler, API
 from tweepy import Stream
 
-from secrets import *
-
-access_token = access_token
-access_token_secret = access_token_secret
-consumer_key = consumer_key
-consumer_secret = consumer_secret
+access_token = os.environ.get('access_token')
+access_token_secret = os.environ.get('access_token_secret')
+consumer_key = os.environ.get('consumer_key')
+consumer_secret = os.environ.get('consumer_secret')
 
 auth_handler = OAuthHandler(consumer_key, consumer_secret)
 auth_handler.set_access_token(access_token, access_token_secret)
@@ -23,7 +23,7 @@ class TweetsListener(StreamListener):
         tweet = json.loads(data)
         try:
             api.retweet(tweet['id'])
-            logging.debug("RT: {}".format(tweet['text']))
+            logging.info("RT: {}".format(tweet['text']))
         except Exception as e:
             logging.error(e)
         return True

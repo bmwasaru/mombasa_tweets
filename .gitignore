@@ -1,2 +1,3 @@
 venv
-secrets.py
+.env
+*.pyc
