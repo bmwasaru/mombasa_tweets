@@ -1,4 +1,4 @@
-# mombasa
+# mombasa_tweets
 
 Retweet tweets with 'mombasa'
 
