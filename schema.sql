@@ -1,0 +1,8 @@
+CREATE TABLE tweets (
+	id SERIAL PRIMARY KEY,
+	tweet_id VARCHAR(255) NOT NULL,
+	tweet_text TEXT NOT NULL,
+	added_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+)
+
+CREATE INDEX ON tweets (added_at);
