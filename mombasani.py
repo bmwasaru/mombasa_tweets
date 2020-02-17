@@ -15,8 +15,8 @@ consumer_secret = os.environ.get('consumer_secret')
 
 db = mysql.connector.connect(
     host="localhost",
-    user=os.environ.get('user'),
-    passwd=os.environ.get('passwd'),
+    user=os.environ.get('db_user'),
+    passwd=os.environ.get('db_user_passwd'),
     database="mombasani"
 )
 
