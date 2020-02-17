@@ -2,7 +2,7 @@
 Description=Monitor tweets that mention Mombasa
 
 [Service]
-ExecStart=/home/ubuntu/mombasani/mombasani.py
+ExecStart=/home/ubuntu/mombasa_tweets/mombasani.py
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=mombasani
