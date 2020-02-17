@@ -1,0 +1,9 @@
+[Unit]
+Description=Monitor tweets that mention Mombasa
+
+[Service]
+ExecStart=/home/ubuntu/mombasani/mombasani.py
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=mombasani
+Restart=on-failure
