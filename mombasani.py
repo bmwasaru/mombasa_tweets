@@ -6,18 +6,18 @@ import logging
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler, API
 from tweepy import Stream
-import mysql.connector
+import psycopg2
 
 access_token = os.environ.get('access_token')
 access_token_secret = os.environ.get('access_token_secret')
 consumer_key = os.environ.get('consumer_key')
 consumer_secret = os.environ.get('consumer_secret')
 
-db = mysql.connector.connect(
+db = psycopg2.connect(
     host="localhost",
     user=os.environ.get('user'),
-    passwd=os.environ.get('passwd'),
-    database="mombasani"
+    password=os.environ.get('passwd'),
+    dbname="mombasani"
 )
 
 db_cursor = db.cursor()
