@@ -6,3 +6,5 @@ CREATE TABLE IF NOT EXISTS tweets (
 );
 
 CREATE INDEX ON tweets (added_at);
+
+ALTER DATABASE mombasani CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';
