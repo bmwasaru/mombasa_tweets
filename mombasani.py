@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import os
 import json
 import logging
+import time
 
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler, API
@@ -34,11 +35,6 @@ class TweetsListener(StreamListener):
         sql = "INSERT INTO tweets (tweet_id, tweet_text) VALUES (%s, %s)"
         values = (tweet['id'], tweet['text'])
         db_cursor.execute(sql, values)
-        db.commit()
-        try:
-            logging.info("RT: {}".format(tweet['text']))
-        except Exception as e:
-            logging.error(e)
         return True
 
     def on_error(self, status):
@@ -46,8 +42,12 @@ class TweetsListener(StreamListener):
 
 
 if __name__ == '__main__':
-    listener = TweetsListener()
-    auth = OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-    stream = Stream(auth, listener)
-    stream.filter(track=['mombasa'])
+    try:
+        listener = TweetsListener()
+        auth = OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_token, access_token_secret)
+        stream = Stream(auth, listener)
+        stream.filter(track=['mombasa'])
+    except Exception as e:
+        print(e)
+        time.sleep(3600)
