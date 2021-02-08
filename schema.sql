@@ -1,3 +1,5 @@
+SET TIMEZONE='Africa/Nairobi';
+
 CREATE TABLE IF NOT EXISTS tweets (
 	id SERIAL PRIMARY KEY,
 	tweet_id VARCHAR(255) NOT NULL,
